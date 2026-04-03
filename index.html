@@ -1,0 +1,783 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+  <title>Rabbithole Consulting â AI That Makes Your Business Money</title>
+  <meta name="description" content="We help business owners find the exact places where AI creates real revenue. Based in Puerto Rico. Book a free strategy call."/>
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website"/>
+  <meta property="og:url" content="https://rabbithole.consulting/"/>
+  <meta property="og:title" content="Rabbithole Consulting â AI That Makes Your Business Money"/>
+  <meta property="og:description" content="We help business owners find the exact places where AI creates real revenue â not more tools, not more complexity, just more profit. Based in San Juan, Puerto Rico."/>
+  <meta property="og:image" content="https://rabbithole.consulting/og-image.png"/>
+  <meta property="og:image:width" content="1200"/>
+  <meta property="og:image:height" content="630"/>
+  <meta property="og:site_name" content="Rabbithole Consulting"/>
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image"/>
+  <meta name="twitter:title" content="Rabbithole Consulting â AI That Makes Your Business Money"/>
+  <meta name="twitter:description" content="We help business owners find the exact places where AI creates real revenue â not more tools, not more complexity, just more profit."/>
+  <meta name="twitter:image" content="https://rabbithole.consulting/og-image.png"/>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Orbitron:wght@400;500;600;700;800;900&display=swap" rel="stylesheet"/>
+  <style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --bg:#000;--card:rgba(255,255,255,0.03);--card-hover:rgba(255,255,255,0.06);
+  --border:rgba(255,255,255,0.07);--border-hover:rgba(255,255,255,0.14);
+  --text:#fff;--text2:rgba(255,255,255,0.6);--muted:rgba(255,255,255,0.35);
+  --green:#22c55e;--green-glow:rgba(34,197,94,0.25);--green-dim:rgba(34,197,94,0.08);
+}
+html{scroll-behavior:smooth}
+body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);
+  -webkit-font-smoothing:antialiased;overflow-x:hidden;line-height:1.6}
+
+/* GLOBAL CANVAS */
+#globalCanvas{position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:0}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:999;padding:1.1rem 2.5rem;
+  display:flex;justify-content:space-between;align-items:center;transition:all .4s}
+nav.scrolled{background:rgba(0,0,0,.75);backdrop-filter:blur(24px);border-bottom:1px solid var(--border)}
+.logo{font-family:'Orbitron',sans-serif;font-size:.95rem;letter-spacing:.08em;color:var(--text);text-decoration:none;text-transform:uppercase}
+.logo b{font-weight:700}.logo span{font-weight:400;opacity:.5}
+.nav-pill{display:flex;gap:.15rem;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.07);
+  border-radius:100px;padding:.35rem .45rem}
+.nav-pill a{color:var(--text2);text-decoration:none;font-size:.82rem;font-weight:500;
+  padding:.45rem 1.1rem;border-radius:100px;transition:all .25s}
+.nav-pill a:hover{color:#fff;background:rgba(255,255,255,.08)}
+.nav-cta{display:inline-flex;align-items:center;gap:.55rem;background:#fff;color:#000;
+  padding:.55rem 1.4rem;border-radius:100px;text-decoration:none;font-size:.82rem;font-weight:600;transition:all .25s}
+.nav-cta:hover{background:rgba(255,255,255,.88);transform:scale(1.03)}
+.nav-dot{width:8px;height:8px;border-radius:50%;background:var(--green);box-shadow:0 0 12px var(--green)}
+
+/* HERO */
+.hero{position:relative;min-height:100vh;display:flex;flex-direction:column;align-items:center;
+  justify-content:center;text-align:center;padding:8rem 2rem 4rem;overflow:hidden}
+
+/* Green glow orb */
+.hero-glow{position:absolute;top:-180px;left:50%;transform:translateX(-50%);width:900px;height:900px;
+  background:radial-gradient(circle,rgba(34,197,94,.12) 0%,rgba(34,197,94,.04) 35%,transparent 65%);
+  pointer-events:none;z-index:1;animation:breathe 4s ease-in-out infinite}
+@keyframes breathe{0%,100%{opacity:.7;transform:translateX(-50%) scale(1)}50%{opacity:1;transform:translateX(-50%) scale(1.15)}}
+
+/* Green beam */
+.hero-beam{position:absolute;top:0;left:50%;transform:translateX(-50%);width:2px;height:200px;
+  background:linear-gradient(to bottom,var(--green),transparent);z-index:2;opacity:.6;
+  box-shadow:0 0 15px var(--green),0 0 40px rgba(34,197,94,.3)}
+
+/* Circuit lines */
+.circuit-wrap{position:absolute;top:50%;left:50%;transform:translate(-50%,-65%);width:900px;height:200px;z-index:2;pointer-events:none}
+.circuit-line{position:absolute;top:50%;height:1px;background:linear-gradient(90deg,transparent,rgba(34,197,94,.25),rgba(34,197,94,.08));transform-origin:center}
+.circuit-line.left{right:50%;width:45%;background:linear-gradient(270deg,rgba(34,197,94,.35),rgba(34,197,94,.08),transparent)}
+.circuit-line.right{left:50%;width:45%;background:linear-gradient(90deg,rgba(34,197,94,.35),rgba(34,197,94,.08),transparent)}
+.circuit-node{position:absolute;top:50%;width:6px;height:6px;border-radius:50%;background:var(--green);
+  box-shadow:0 0 10px var(--green),0 0 25px rgba(34,197,94,.4);transform:translateY(-50%)}
+.circuit-node.n1{left:12%}.circuit-node.n2{left:35%}.circuit-node.n3{right:35%}.circuit-node.n4{right:12%}
+
+.hero-content{position:relative;z-index:3}
+.hero-badge{display:inline-flex;align-items:center;gap:.55rem;font-size:.72rem;font-weight:600;
+  color:var(--text2);background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);
+  padding:.5rem 1.3rem;border-radius:100px;text-transform:uppercase;letter-spacing:.06em;margin-bottom:2.5rem}
+.badge-dot{width:6px;height:6px;border-radius:50%;background:var(--green);box-shadow:0 0 12px var(--green)}
+.hero h1{font-size:clamp(2.8rem,6.5vw,5.5rem);font-weight:300;letter-spacing:-.045em;line-height:1.0;
+  max-width:950px;margin:0 auto 1.75rem}
+.hero h1 em{font-style:normal;background:linear-gradient(135deg,#22c55e,#86efac,#22c55e);
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
+  background-size:200% 200%;animation:shimmer 3s ease-in-out infinite}
+@keyframes shimmer{0%{background-position:0% 50%}50%{background-position:100% 50%}100%{background-position:0% 50%}}
+.hero-sub{font-size:1.15rem;color:var(--text2);max-width:520px;margin:0 auto 3rem;line-height:1.75;font-weight:400}
+.hero-cta{display:inline-flex;align-items:center;gap:.7rem;background:#fff;color:#000;
+  padding:.9rem 2.2rem;border-radius:100px;text-decoration:none;font-size:.95rem;font-weight:600;
+  transition:all .3s;box-shadow:0 0 40px rgba(255,255,255,.06);position:relative}
+.hero-cta:hover{transform:translateY(-2px);box-shadow:0 0 60px rgba(255,255,255,.12)}
+.cta-icon{width:28px;height:28px;border-radius:8px;background:var(--green);display:flex;
+  align-items:center;justify-content:center;box-shadow:0 0 12px rgba(34,197,94,.4)}
+.cta-icon svg{width:14px;height:14px}
+.hero-note{margin-top:1.1rem;font-size:.82rem;color:var(--muted)}
+
+/* Pulse ring on CTA */
+.hero-cta::after{content:'';position:absolute;inset:-3px;border-radius:100px;
+  border:1px solid rgba(34,197,94,.3);animation:ctaPulse 2.5s ease-in-out infinite;pointer-events:none}
+@keyframes ctaPulse{0%,100%{opacity:0;transform:scale(1)}50%{opacity:1;transform:scale(1.03)}}
+
+/* WAVES */
+.waves{position:relative;width:100%;height:180px;overflow:hidden;z-index:3;margin-top:-60px}
+.waves svg{position:absolute;bottom:0;width:120%;left:-10%}
+.wave1{animation:waveDrift1 8s ease-in-out infinite}
+.wave2{animation:waveDrift2 10s ease-in-out infinite}
+.wave3{animation:waveDrift3 12s ease-in-out infinite}
+@keyframes waveDrift1{0%,100%{transform:translateX(0)}50%{transform:translateX(-20px)}}
+@keyframes waveDrift2{0%,100%{transform:translateX(0)}50%{transform:translateX(15px)}}
+@keyframes waveDrift3{0%,100%{transform:translateX(0)}50%{transform:translateX(-10px)}}
+
+/* SECTION DIVIDER â animated glowing line */
+.section-divider{position:relative;height:1px;max-width:700px;margin:0 auto;overflow:visible}
+.section-divider .div-line{width:100%;height:1px;background:linear-gradient(90deg,transparent,rgba(255,255,255,.08),transparent)}
+.section-divider .div-glow{position:absolute;top:-2px;left:0;width:60px;height:5px;
+  background:radial-gradient(ellipse,var(--green),transparent);border-radius:50%;filter:blur(2px);
+  animation:divGlow 4s ease-in-out infinite}
+@keyframes divGlow{0%{left:0%;opacity:0}10%{opacity:1}90%{opacity:1}100%{left:100%;opacity:0}}
+
+/* SECTIONS */
+section{padding:8rem 2rem;position:relative;z-index:1}
+.container{max-width:1180px;margin:0 auto}
+
+/* SECTION HEADERS */
+.sec-head{text-align:center;margin-bottom:4.5rem}
+.sec-tag{display:inline-flex;align-items:center;gap:.5rem;font-size:.7rem;font-weight:600;
+  color:var(--green);text-transform:uppercase;letter-spacing:.1em;margin-bottom:1.3rem}
+.tag-line{width:24px;height:1px;background:var(--green);opacity:.4}
+.sec-head h2{font-size:clamp(1.8rem,4vw,3rem);font-weight:300;letter-spacing:-.04em;line-height:1.1;margin-bottom:1rem}
+.sec-head p{font-size:1.05rem;color:var(--text2);max-width:540px;margin:0 auto;line-height:1.7}
+
+/* CARDS â magnetic tilt */
+.card{background:var(--card);border:1px solid var(--border);border-radius:22px;padding:2.5rem;
+  backdrop-filter:blur(6px);transition:border-color .4s, background .4s;
+  position:relative;overflow:hidden;transform-style:preserve-3d;perspective:800px}
+.card::before{content:'';position:absolute;top:0;left:0;right:0;bottom:0;border-radius:22px;
+  background:radial-gradient(600px circle at var(--mouse-x, 50%) var(--mouse-y, 50%),rgba(34,197,94,.06),transparent 40%);
+  opacity:0;transition:opacity .4s;pointer-events:none}
+.card:hover::before{opacity:1}
+.card:hover{background:var(--card-hover);border-color:var(--border-hover)}
+.card-icon{width:52px;height:52px;border-radius:14px;background:var(--green-dim);
+  border:1px solid rgba(34,197,94,.12);display:flex;align-items:center;justify-content:center;
+  font-size:1.3rem;margin-bottom:1.5rem}
+.card h3{font-size:1.1rem;font-weight:600;margin-bottom:.7rem;letter-spacing:-.01em}
+.card p{color:var(--muted);font-size:.9rem;line-height:1.7}
+
+/* Card glow border on hover */
+.card::after{content:'';position:absolute;inset:-1px;border-radius:23px;
+  background:conic-gradient(from var(--card-angle,0deg),transparent,rgba(34,197,94,.15),transparent,rgba(34,197,94,.08),transparent);
+  z-index:-1;opacity:0;transition:opacity .5s}
+.card:hover::after{opacity:1}
+
+/* GRID */
+.grid-3{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:1.25rem}
+.grid-4{display:grid;grid-template-columns:repeat(auto-fit,minmax(265px,1fr));gap:1.25rem}
+
+/* STATS */
+.stats{padding:5rem 2rem}
+.stats-grid{max-width:960px;margin:0 auto;display:grid;grid-template-columns:repeat(3,1fr);gap:1.25rem}
+.stat-card{text-align:center;padding:2.5rem 1.5rem;background:var(--card);border:1px solid var(--border);
+  border-radius:22px;backdrop-filter:blur(6px);transition:all .4s;position:relative;overflow:hidden}
+.stat-card::before{content:'';position:absolute;top:0;left:50%;transform:translateX(-50%);
+  width:200px;height:120px;background:radial-gradient(ellipse at top,rgba(34,197,94,.06),transparent 70%);
+  opacity:0;transition:opacity .5s;pointer-events:none}
+.stat-card:hover::before{opacity:1}
+.stat-card:hover{border-color:var(--border-hover);transform:translateY(-3px)}
+.stat-num{font-size:3rem;font-weight:300;letter-spacing:-.04em;margin-bottom:.4rem;
+  background:linear-gradient(135deg,#22c55e,#86efac);-webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;background-clip:text}
+.stat-label{font-size:.82rem;color:var(--muted);line-height:1.5}
+
+/* SERVICE DOT */
+.svc-dot{width:10px;height:10px;border-radius:50%;background:var(--green);
+  box-shadow:0 0 14px var(--green-glow);margin-bottom:1.5rem;transition:all .4s}
+.card:hover .svc-dot{box-shadow:0 0 24px var(--green),0 0 50px rgba(34,197,94,.3);transform:scale(1.3)}
+
+/* OPPORTUNITY */
+.opp-content{max-width:680px;margin:0 auto}
+.opp-content p{color:var(--text2);font-size:1.05rem;line-height:1.8;margin-bottom:1.3rem}
+.opp-content strong{color:#fff}
+.highlight-box{margin-top:2.5rem;background:var(--green-dim);border:1px solid rgba(34,197,94,.1);
+  border-radius:22px;padding:2rem 2.5rem;position:relative;overflow:hidden}
+.highlight-box::before{content:'';position:absolute;top:-1px;left:15%;right:15%;height:1px;
+  background:linear-gradient(90deg,transparent,var(--green),transparent);opacity:.35}
+.highlight-box p{color:var(--green);font-size:.98rem;margin:0;font-weight:500;line-height:1.7}
+
+/* Text reveal clip */
+.text-reveal{clip-path:inset(0 100% 0 0)}
+.text-reveal.revealed{clip-path:inset(0 0% 0 0)}
+
+/* ABOUT */
+.about-inner{max-width:680px;margin:0 auto}
+.about-inner p{color:var(--text2);font-size:1.05rem;line-height:1.8;margin-bottom:1.3rem}
+.about-inner strong{color:#fff}
+.loc-tag{display:inline-flex;align-items:center;gap:.5rem;font-size:.82rem;color:var(--text2);
+  background:rgba(255,255,255,.04);border:1px solid var(--border);padding:.5rem 1.3rem;
+  border-radius:100px;margin-top:.75rem}
+.loc-tag svg{opacity:.5}
+
+/* URGENCY */
+.urg-box{max-width:720px;margin:0 auto;background:var(--card);border:1px solid var(--border);
+  border-radius:26px;padding:4rem 3rem;text-align:center;position:relative;overflow:hidden;backdrop-filter:blur(6px)}
+.urg-box::before{content:'';position:absolute;top:-1px;left:10%;right:10%;height:2px;
+  background:linear-gradient(90deg,transparent,var(--green),transparent);opacity:.4}
+.urg-box::after{content:'';position:absolute;top:0;left:50%;transform:translateX(-50%);
+  width:500px;height:280px;background:radial-gradient(ellipse at top,rgba(34,197,94,.07),transparent 70%);pointer-events:none}
+.urg-box h2{font-size:1.8rem;font-weight:300;letter-spacing:-.03em;margin-bottom:1.3rem;position:relative;z-index:1}
+.urg-box p{color:var(--text2);font-size:.98rem;line-height:1.7;margin-bottom:.8rem;
+  max-width:520px;margin-left:auto;margin-right:auto;position:relative;z-index:1}
+.urg-box strong{color:#fff}
+
+/* FINAL CTA */
+.final-cta{text-align:center;padding:3rem 2rem 8rem}
+.cta-box{background:var(--card);border:1px solid var(--border);border-radius:26px;
+  padding:5rem 3rem;max-width:720px;margin:0 auto;position:relative;overflow:hidden;backdrop-filter:blur(6px)}
+.cta-box::before{content:'';position:absolute;top:-1px;left:8%;right:8%;height:2px;
+  background:linear-gradient(90deg,transparent,var(--green),transparent);opacity:.5}
+.cta-box::after{content:'';position:absolute;top:0;left:50%;transform:translateX(-50%);
+  width:600px;height:300px;background:radial-gradient(ellipse at top,rgba(34,197,94,.08),transparent 70%);pointer-events:none}
+.cta-box h2{font-size:2.2rem;font-weight:300;letter-spacing:-.04em;margin-bottom:1rem;position:relative;z-index:1}
+.cta-box>p{color:var(--text2);font-size:1.05rem;margin-bottom:2.2rem;max-width:460px;
+  margin-left:auto;margin-right:auto;line-height:1.7;position:relative;z-index:1}
+
+/* FOOTER */
+footer{padding:2.5rem 2rem;text-align:center;border-top:1px solid rgba(255,255,255,.04);position:relative;z-index:1}
+footer p{color:var(--muted);font-size:.78rem;letter-spacing:.02em}
+
+/* STEP NUM */
+.step-num{display:inline-flex;align-items:center;justify-content:center;width:40px;height:40px;
+  border-radius:12px;background:var(--green-dim);border:1px solid rgba(34,197,94,.15);
+  font-size:.8rem;font-weight:700;color:var(--green);margin-bottom:1.5rem;letter-spacing:.02em}
+
+/* Section glow orbs */
+.section-glow{position:absolute;width:600px;height:600px;border-radius:50%;
+  background:radial-gradient(circle,rgba(34,197,94,.04) 0%,transparent 70%);
+  pointer-events:none;z-index:0}
+
+/* RESPONSIVE */
+
+/* Large tablets / small desktops */
+@media(max-width:1024px){
+  nav{padding:1rem 1.8rem}
+  .hero h1{font-size:clamp(2.4rem,5.5vw,4.2rem)}
+  .hero-sub{font-size:1.05rem;max-width:460px}
+  .grid-4{grid-template-columns:repeat(2,1fr)}
+  .stats-grid{gap:1rem}
+  .container{max-width:960px}
+  .circuit-wrap{width:700px}
+  .hero-glow{width:700px;height:700px}
+  .opp-content,.about-inner{max-width:600px}
+  .urg-box,.cta-box{max-width:640px}
+}
+
+/* Tablets */
+@media(max-width:768px){
+  nav{padding:.9rem 1.2rem}
+  .nav-pill{display:none}
+  section{padding:5rem 1.25rem}
+  .hero{padding:7rem 1.25rem 3rem;min-height:90vh}
+  .hero h1{font-size:2.2rem;max-width:500px}
+  .hero-sub{font-size:.98rem;max-width:400px;margin-bottom:2rem}
+  .hero-cta{padding:.8rem 1.8rem;font-size:.88rem}
+  .stats-grid{grid-template-columns:1fr;max-width:400px}
+  .grid-3,.grid-4{grid-template-columns:1fr}
+  .circuit-wrap{display:none}
+  .hero-glow{width:500px;height:500px;top:-100px}
+  .cta-box,.urg-box{padding:3rem 1.5rem}
+  .cta-box h2{font-size:1.6rem}
+  .urg-box h2{font-size:1.5rem}
+  .sec-head h2{font-size:1.6rem}
+  .sec-head p{font-size:.95rem}
+  .card{padding:2rem}
+  .opp-content p,.about-inner p{font-size:.95rem}
+  .highlight-box{padding:1.5rem 1.8rem}
+  .section-glow{width:350px;height:350px}
+  .waves{height:120px}
+  .logo{font-size:.8rem}
+  .nav-cta{padding:.45rem 1rem;font-size:.78rem}
+}
+
+/* Small phones */
+@media(max-width:480px){
+  nav{padding:.75rem 1rem}
+  .hero{padding:6rem 1rem 2.5rem;min-height:85vh}
+  .hero h1{font-size:1.8rem;letter-spacing:-.03em}
+  .hero-sub{font-size:.9rem;max-width:320px;line-height:1.65;margin-bottom:1.8rem}
+  .hero-cta{padding:.75rem 1.5rem;font-size:.85rem;gap:.5rem}
+  .cta-icon{width:24px;height:24px}
+  .hero-note{font-size:.75rem}
+  section{padding:3.5rem 1rem}
+  .sec-head{margin-bottom:3rem}
+  .sec-head h2{font-size:1.4rem}
+  .sec-head p{font-size:.88rem}
+  .card{padding:1.75rem;border-radius:18px}
+  .card h3{font-size:1rem}
+  .card p{font-size:.85rem}
+  .card-icon{width:44px;height:44px;border-radius:12px}
+  .card-icon svg{width:20px;height:20px}
+  .stat-card{padding:2rem 1.2rem;border-radius:18px}
+  .stat-num{font-size:2.4rem}
+  .stat-label{font-size:.78rem}
+  .stats{padding:3rem 1rem}
+  .opp-content p,.about-inner p{font-size:.9rem;line-height:1.7}
+  .highlight-box{padding:1.25rem 1.4rem;border-radius:16px}
+  .highlight-box p{font-size:.88rem}
+  .urg-box{padding:2.5rem 1.25rem;border-radius:20px}
+  .urg-box h2{font-size:1.3rem}
+  .urg-box p{font-size:.88rem}
+  .cta-box{padding:3rem 1.5rem;border-radius:20px}
+  .cta-box h2{font-size:1.4rem}
+  .cta-box>p{font-size:.92rem}
+  .step-num{width:36px;height:36px;font-size:.75rem;border-radius:10px}
+  .svc-dot{width:8px;height:8px}
+  .loc-tag{font-size:.78rem;padding:.4rem 1rem}
+  .final-cta{padding:2rem 1rem 5rem}
+  .hero-glow{width:350px;height:350px;top:-80px}
+  .hero-beam{height:140px}
+  .waves{height:80px;margin-top:-30px}
+  .section-divider{max-width:90%}
+  .grid-3,.grid-4{gap:1rem}
+  .logo{font-size:.72rem;letter-spacing:.05em}
+  .nav-cta{padding:.4rem .9rem;font-size:.72rem;gap:.4rem}
+  .nav-dot{width:6px;height:6px}
+  footer{padding:2rem 1rem}
+  footer p{font-size:.72rem}
+}
+
+/* GSAP initial states */
+.anim-up{opacity:0;transform:translateY(50px)}
+.anim-scale{opacity:0;transform:scale(.88)}
+.anim-left{opacity:0;transform:translateX(-60px)}
+.anim-right{opacity:0;transform:translateX(60px)}
+.anim-rotate{opacity:0;transform:rotate(-3deg) scale(.9)}
+  </style>
+</head>
+<body>
+
+<!-- GLOBAL PARTICLE CANVAS -->
+<canvas id="globalCanvas"></canvas>
+
+<!-- NAV -->
+<nav id="mainNav">
+  <a href="#" class="logo"><b>RABBITHOLE</b><span>CONSULTING</span></a>
+  <div class="nav-pill">
+    <a href="#problem">The Problem</a>
+    <a href="#how">How It Works</a>
+    <a href="#services">Services</a>
+    <a href="#about">About</a>
+  </div>
+  <a href="#book" class="nav-cta"><span class="nav-dot"></span>Book a Call</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-glow"></div>
+  <div class="hero-beam"></div>
+  <div class="circuit-wrap">
+    <div class="circuit-line left"></div>
+    <div class="circuit-line right"></div>
+    <div class="circuit-node n1"></div>
+    <div class="circuit-node n2"></div>
+    <div class="circuit-node n3"></div>
+    <div class="circuit-node n4"></div>
+  </div>
+  <div class="hero-content">
+    <h1 class="anim-up">Your competitors are using AI to <em>make more money</em>. Are you?</h1>
+    <p class="hero-sub anim-up">We help business owners find the exact places where AI creates real revenue â not more tools, not more complexity, just more profit.</p>
+    <a href="https://calendly.com/YOUR-LINK-HERE" class="hero-cta anim-up">
+      <span class="cta-icon"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="#000"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"/></svg></span>
+      Book a Free Strategy Call
+    </a>
+    <p class="hero-note anim-up">30 minutes. Free. No pitch â just a clear plan for your business.</p>
+  </div>
+</section>
+
+<!-- WAVES -->
+<div class="waves">
+  <svg class="wave1" viewBox="0 0 1440 180" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M0 80C360 0 540 160 720 100S1080 20 1440 80V180H0Z" fill="rgba(34,197,94,0.03)"/>
+    <path d="M0 80C360 0 540 160 720 100S1080 20 1440 80" stroke="rgba(34,197,94,0.12)" stroke-width="1" fill="none"/>
+  </svg>
+  <svg class="wave2" viewBox="0 0 1440 180" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M0 100C240 40 480 140 720 90S1200 50 1440 110V180H0Z" fill="rgba(34,197,94,0.02)"/>
+    <path d="M0 100C240 40 480 140 720 90S1200 50 1440 110" stroke="rgba(34,197,94,0.08)" stroke-width="1" fill="none"/>
+  </svg>
+  <svg class="wave3" viewBox="0 0 1440 180" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M0 120C300 60 600 150 900 80S1200 100 1440 60V180H0Z" fill="rgba(0,0,0,1)"/>
+    <path d="M0 120C300 60 600 150 900 80S1200 100 1440 60" stroke="rgba(34,197,94,0.06)" stroke-width="1" fill="none"/>
+  </svg>
+</div>
+
+<!-- STATS -->
+<section class="stats">
+  <div class="stats-grid">
+    <div class="stat-card anim-scale">
+      <div class="stat-num" data-count="M">$M+</div>
+      <div class="stat-label">Revenue generated with AI-powered systems we've built and scaled</div>
+    </div>
+    <div class="stat-card anim-scale">
+      <div class="stat-num" data-count="50">50+</div>
+      <div class="stat-label">AI systems shipped for real businesses â not prototypes, production</div>
+    </div>
+    <div class="stat-card anim-scale">
+      <div class="stat-num" data-count="10">10x</div>
+      <div class="stat-label">Typical efficiency gain our clients see within 90 days</div>
+    </div>
+  </div>
+</section>
+
+<div class="section-divider"><div class="div-line"></div><div class="div-glow"></div></div>
+
+<!-- PROBLEM -->
+<section id="problem">
+  <div class="section-glow" style="top:-200px;left:-200px"></div>
+  <div class="container">
+    <div class="sec-head">
+      <div class="sec-tag anim-up"><span class="tag-line"></span>The Problem<span class="tag-line"></span></div>
+      <h2 class="anim-up">The AI problem nobody talks about</h2>
+      <p class="anim-up">Most businesses are using AI. Few are getting compounding returns from it. Here's what we see over and over.</p>
+    </div>
+    <div class="grid-3">
+      <div class="card anim-left">
+        <div class="card-icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="var(--green)"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6v12m-3-2.818l.879.659c1.171.879 3.07.879 4.242 0 1.172-.879 1.172-2.303 0-3.182C13.536 12.219 12.768 12 12 12c-.725 0-1.45-.22-2.003-.659-1.106-.879-1.106-2.303 0-3.182s2.9-.879 4.006 0l.415.33M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg></div>
+        <h3>You're paying for AI, not profiting from it</h3>
+        <p>ChatGPT, Copilot, AI tools everywhere â but can you point to a single workflow where AI is clearly putting money back in your pocket? Most can't.</p>
+      </div>
+      <div class="card anim-up">
+        <div class="card-icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="var(--green)"><path stroke-linecap="round" stroke-linejoin="round" d="M9.75 3.104v5.714a2.25 2.25 0 01-.659 1.591L5 14.5M9.75 3.104c-.251.023-.501.05-.75.082m.75-.082a24.301 24.301 0 014.5 0m0 0v5.714a2.25 2.25 0 00.659 1.591L19 14.5m-4.75-11.396c.25.023.5.05.75.082M5 14.5l-1.456 1.456a1.5 1.5 0 001.06 2.544h14.792a1.5 1.5 0 001.06-2.544L19 14.5m-14 0h14"/></svg></div>
+        <h3>Your team is experimenting, not executing</h3>
+        <p>Everyone's "trying AI" but nobody has a system. The result is scattered experiments that never compound into real operational improvement.</p>
+      </div>
+      <div class="card anim-right">
+        <div class="card-icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="var(--green)"><path stroke-linecap="round" stroke-linejoin="round" d="M3 13.125C3 12.504 3.504 12 4.125 12h2.25c.621 0 1.125.504 1.125 1.125v6.75C7.5 20.496 6.996 21 6.375 21h-2.25A1.125 1.125 0 013 19.875v-6.75zM9.75 8.625c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125v11.25c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 01-1.125-1.125V8.625zM16.5 4.125c0-.621.504-1.125 1.125-1.125h2.25C20.496 3 21 3.504 21 4.125v15.75c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 01-1.125-1.125V4.125z"/></svg></div>
+        <h3>You're falling behind while you figure it out</h3>
+        <p>Your competitors aren't waiting. The businesses that figure out AI now will have a compounding advantage that's nearly impossible to catch up to.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="section-divider"><div class="div-line"></div><div class="div-glow" style="animation-delay:2s"></div></div>
+
+<!-- OPPORTUNITY -->
+<section id="opportunity">
+  <div class="section-glow" style="bottom:-200px;right:-200px"></div>
+  <div class="container">
+    <div class="sec-head">
+      <div class="sec-tag anim-up"><span class="tag-line"></span>The Opportunity<span class="tag-line"></span></div>
+      <h2 class="anim-up">Here's what most people get wrong about AI</h2>
+    </div>
+    <div class="opp-content">
+      <p class="anim-up">The value of AI isn't the tools â it's the <strong>systems</strong>. Buying ChatGPT doesn't make your business smarter any more than buying a gym membership makes you fit. What matters is how you integrate AI into the way your business actually operates.</p>
+      <p class="anim-up">The businesses winning with AI right now aren't using fancier models. They've built systems where <strong>AI remembers their context, learns their operations, and gets better every single week</strong> â automatically.</p>
+      <p class="anim-up">That's what we build. Not one-off automations, but compounding AI sysÍÑµÌÑ¡Ðµ­å½ÕÈÕÍ¥¹ÍÌµ½ÉÁÉ½¥Ñ±Ñ¡±½¹ÈÑ¡äÉÕ¸¸ð½Àø(ñ¥Ø±ÍÌô¡¥¡±¥¡Ðµ½à¹¥´µÍ±ø(ñÀùQ¡ÀÑÝ¸ÕÍ¥¹ÍÍÌÑ¡Ð¥ÕÉÑ¡¥Ì½ÕÐ¹½Ü¹Ñ¡½ÍÑ¡ÐÝ¥Ð¥ÌÉ½Ý¥¹ÙÉäµ½¹Ñ ¸%¸ÄÈµ½¹Ñ¡Ì°¥ÐÝ¥±°¡Í´¸ð½Àø(ð½¥Øø(ð½¥Øø(ð½¥Øø(ð½ÍÑ¥½¸ø((ñ¥Ø±ÍÌôÍÑ¥½¸µ¥Ù¥Èøñ¥Ø±ÍÌô¥Øµ±¥¹øð½¥Øøñ¥Ø±ÍÌô¥Øµ±½ÜÍÑå±ô¹¥µÑ¥½¸µ±äèÅÌøð½¥Øøð½¥Øø((ð´´!=\%P]=I-L´´ø(ñÍÑ¥½¸¥ô¡½Üø(ñ¥Ø±ÍÌôÍÑ¥½¸µ±½ÜÍÑå±ôÑ½Àè´ÄÔÁÁàíÉ¥¡Ðè´ÈÔÁÁàøð½¥Øø(ñ¥Ø±ÍÌô½¹Ñ¥¹Èø(ñ¥Ø±ÍÌôÍµ¡ø(ñ¥Ø±ÍÌôÍµÑ¹¥´µÕÀøñÍÁ¸±ÍÌôÑµ±¥¹øð½ÍÁ¸ù!½Ü%Ð]½É­ÌñÍÁ¸±ÍÌôÑµ±¥¹øð½ÍÁ¸øð½¥Øø(ñ È±ÍÌô¹¥´µÕÀù!½ÜÝÝ½É¬ð½ Èø(ñÀ±ÍÌô¹¥´µÕÀùÙÉä¹µ¹ÐÍÑÉÑÌÑ¡ÍµÝäPÝ¥Ñ ½¹ÙÉÍÑ¥½¸½ÕÐå½ÕÈÕÍ¥¹ÍÌ°¹½ÐÍ±ÌÁ¥Ñ ½ÕÐ½ÕÈÑ½½±Ì¸ð½Àø(ð½¥Øø(ñ¥Ø±ÍÌôÉ¥´Ìø(ñ¥Ø±ÍÌôÉ¹¥´µÉ½ÑÑÑµÍÑÀôÄø(ñ¥Ø±ÍÌôÍÑÀµ¹Õ´øÀÄð½¥Øø(ñ ÌùMÑÉÑä±°ð½ Ìø(ñÀù]±É¸å½ÕÈÕÍ¥¹ÍÌ¥¹Í¥¹½ÕÐPå½ÕÈÉÙ¹ÕÍÑÉµÌ°½ÁÉÑ¥½¹Ì°Ñ´ÍÑÉÕÑÕÉ°¹Ý¡Éå½ÔÉÍÁ¹¥¹Ñ¡µ½ÍÐÑ¥µ½È±Ù¥¹Ñ¡µ½ÍÐµ½¹ä½¸Ñ¡Ñ±¸ð½Àø(ð½¥Øø(ñ¥Ø±ÍÌôÉ¹¥´µÉ½ÑÑÑµÍÑÀôÈø(ñ¥Ø±ÍÌôÍÑÀµ¹Õ´øÀÈð½¥Øø(ñ Ìù¥¹å½ÕÈ±ÙÉð½ Ìø(ñÀù]¥¹Ñ¥äÑ¡È´Ì¡¥¡ÍÐµ¥µÁÐ½ÁÁ½ÉÑÕ¹¥Ñ¥ÌÝ¡É$¸¥ÉÑ±ä¥¹ÉÍÉÙ¹Õ½ÈÉµÑ¥±±äÉÕ½ÙÉ¡¸9¼±ÕPÍÁ¥¥°Ñ¥½¹±°Ý¥Ñ ±ÈI=$¸ð½Àø(ð½¥Øø(ñ¥Ø±ÍÌôÉ¹¥´µÉ½ÑÑÑµÍÑÀôÌø(ñ¥Ø±ÍÌôÍÑÀµ¹Õ´øÀÌð½¥Øø(ñ Ìù	Õ¥±¹±Õ¹ ð½ Ìø(ñÀù]Í¥¸¹Á±½äÑ¡ÍåÍÑµÌPÑ¥±½ÉÑ¼å½ÕÈÕÍ¥¹ÍÌ°å½ÕÈÑ½½±Ì°å½ÕÈÑ´¸e½ÔÍÉÍÕ±ÑÌ¥¸Ý­Ì°¹½ÐÅÕÉÑÉÌ¸¹Ñ¡ÍåÍÑµÌ­ÀÑÑ¥¹ÍµÉÑÈ¸ð½Àø(ð½¥Øø(ð½¥Øø(ð½¥Øø(ð½ÍÑ¥½¸ø((ñ¥Ø±ÍÌôÍÑ¥½¸µ¥Ù¥Èøñ¥Ø±ÍÌô¥Øµ±¥¹øð½¥Øøñ¥Ø±ÍÌô¥Øµ±½ÜÍÑå±ô¹¥µÑ¥½¸µ±äèÍÌøð½¥Øøð½¥Øø((ð´´MIY%
+L´´ø(ñÍÑ¥½¸¥ôÍÉÙ¥Ìø(ñ¥Ø±ÍÌôÍÑ¥½¸µ±½ÜÍÑå±ôÑ½ÀèÔÀí±Ðè´ÌÀÁÁàíÑÉ¹Í½É´éÑÉ¹Í±Ñd ´ÔÀ¤øð½¥Øø(ñ¥Ø±ÍÌô½¹Ñ¥¹Èø(ñ¥Ø±ÍÌôÍµ¡ø(ñ¥Ø±ÍÌôÍµÑ¹¥´µÕÀøñÍÁ¸±ÍÌôÑµ±¥¹øð½ÍÁ¸ùMÉÙ¥ÌñÍÁ¸±ÍÌôÑµ±¥¹øð½ÍÁ¸øð½¥Øø(ñ È±ÍÌô¹¥´µÕÀù]¡ÐÝ¸Õ¥±½Èå½Ôð½ Èø(ñÀ±ÍÌô¹¥´µÕÀùÙÉäÕÍ¥¹ÍÌ¥Ì¥É¹Ð¸!ÉÌÑ¡É¹½Ý¡ÐÝ±¥ÙÈPÑ¡ÍÑÉÑä±°ÑÉµ¥¹ÌÝ¡ÐÌÉ¥¡Ð½Èå½ÕÉÌ¸ð½Àø(ð½¥Øø(ñ¥Ø±ÍÌôÉ¥´Ðø(ñ¥Ø±ÍÌôÉ¹¥´µÍ±øñ¥Ø±ÍÌôÍÙµ½Ðøð½¥Øøñ Ìù$=ÁÉÑ¥½¹ÌÕ¥Ðð½ ÌøñÀùÕ±°¥¹½ÍÑ¥½Ý¡É$¥ÑÌ¥¸å½ÕÈÕÍ¥¹ÍÌ¸]µÀå½ÕÈÝ½É­±½ÝÌ°¥¹Ñ¡µ½¹äµµ­¥¹½ÁÁ½ÉÑÕ¹¥Ñ¥Ì°¹¥Ùå½Ô±È¥µÁ±µ¹ÑÑ¥½¸É½µÀPÝ¡Ñ¡Èå½Ô¡¥ÉÕÌÑ¼Õ¥±¥Ð½È¹½Ð¸ð½Àøð½¥Øø(ñ¥Ø±ÍÌôÉ¹¥´µÍ±øñ¥Ø±ÍÌôÍÙµ½Ðøð½¥Øøñ Ìù
+ÕÍÑ½´$MåÍÑµÌð½ ÌøñÀùAÕÉÁ½ÍµÕ¥±Ð$Ý½É­±½ÝÌÑ¡Ð¡¹±É°ÕÍ¥¹ÍÌÁÉ½ÍÍÌP±¥¹Ð½µµÕ¹¥Ñ¥½¸°ÉÁ½ÉÑ¥¹°¥¹ÑÉ¹°½ÁÉÑ¥½¹Ì°Ñ¹±åÍ¥Ì¸MåÍÑµÌÑ¡ÐÉÕ¸°±É¸°¹¥µÁÉ½ÙÕÑ½µÑ¥±±ä¸ð½Àøð½¥Øø(ñ¥Ø±ÍÌôÉ¹¥´µÍ±øñ¥Ø±ÍÌôÍÙµ½Ðøð½¥Øøñ ÌùQ´$QÉ¥¹¥¹ð½ ÌøñÀùÐå½ÕÈÑ´É½´Á±å¥¹Ý¥Ñ 
+¡ÑAPÑ¼ÑÕ±±äÕÍ¥¹$Ì¥±ä½ÁÉÑ¥½¹°Ñ½½°¸!¹Ìµ½¸°ÁÉÑ¥°°Ñ¥Ñ¼å½ÕÈÑÕ°Ý½É­±½ÝÌP¹½Ð¹É¥$ÄÀÄ¸ð½Àøð½¥Øø(ñ¥Ø±ÍÌôÉ¹¥´µÍ±øñ¥Ø±ÍÌôÍÙµ½Ðøð½¥Øøñ Ìù=¹½¥¹=ÁÑ¥µ¥éÑ¥½¸ð½ ÌøñÀù$ÍåÍÑµÌÉ¸ÐÍÐµ¹µ½ÉÐ¸]µ½¹¥Ñ½È°ÑÕ¹°¹áÁ¹å½ÕÈ$¥¹ÉÍÑÉÕÑÕÉ½ÙÈÑ¥µÍ¼¥Ð½µÁ½Õ¹Ì¥¸Ù±ÕÌå½ÕÈÕÍ¥¹ÍÌÉ½ÝÌ¸ð½Àøð½¥Øø(ð½¥Øø(ð½¥Øø(ð½ÍÑ¥½¸ø((ñ¥Ø±ÍÌôÍÑ¥½¸µ¥Ù¥Èøñ¥Ø±ÍÌô¥Øµ±¥¹øð½¥Øøñ¥Ø±ÍÌô¥Øµ±½ÜÍÑå±ô¹¥µÑ¥½¸µ±äè¸ÕÌøð½¥Øøð½¥Øø((ð´´	=UP´´ø(ñÍÑ¥½¸¥ô½ÕÐø(ñ¥Ø±ÍÌôÍÑ¥½¸µ±½ÜÍÑå±ô½ÑÑ½´è´ÈÀÁÁàí±ÐèÔÀíÑÉ¹Í½É´éÑÉ¹Í±Ñ` ´ÔÀ¤øð½¥Øø(ñ¥Ø±ÍÌô½¹Ñ¥¹Èø(ñ¥Ø±ÍÌôÍµ¡ø(ñ¥Ø±ÍÌôÍµÑ¹¥´µÕÀøñÍÁ¸±ÍÌôÑµ±¥¹øð½ÍÁ¸ù½ÕÐñÍÁ¸±ÍÌôÑµ±¥¹øð½ÍÁ¸øð½¥Øø(ñ È±ÍÌô¹¥´µÕÀù]Õ¥±Ý¡ÐÝÍ±°ð½ Èø(ð½¥Øø(ñ¥Ø±ÍÌô½ÕÐµ¥¹¹Èø(ñÀ±ÍÌô¹¥´µÕÀùI¥Ñ¡½±¥Í¸Ð¥¹äÁ¥Ñ¡¥¹­Ì¸]É½ÁÉÑ½ÉÌÝ¡¼ñÍÑÉ½¹ùÉÕ¸½ÕÈ½Ý¸ÕÍ¥¹ÍÍÌ½¸Ñ¡Íµ$ÍåÍÑµÌÝÕ¥±½È±¥¹ÑÌð½ÍÑÉ½¹ø¸]ÙÍ¡¥ÁÁ¹Í±ÁÉ½©ÑÌÑ¼µ¥±±¥½¹Ì½½±±ÉÌ¥¸ÉÙ¹ÕPÝ¥Ñ $ÐÑ¡½É½¡½ÜÝoperate.</p>
+      <p class="anim-up">We're based in <strong>San Juan, Puerto Rico</strong>. If you're visiting the island, there's a good chance we've already met. If not, the strategy call is the next best thing.</p>
+      <p class="anim-up">Every system we deploy for you is one we've pressure-tested on our own operations first. We don't sell theory. We sell what works.</p>
+      <div class="loc-tag anim-up">
+        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M15 10.5a3 3 0 11-6 0 3 3 0 016 0z"/><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1115 0z"/></svg>
+        San Juan, Puerto Rico
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="section-divider"><div class="div-line"></div><div class="div-glow" style="animation-delay:1.5s"></div></div>
+
+<!-- URGENCY -->
+<section>
+  <div class="container">
+    <div class="urg-box anim-scale">
+      <h2>The window is open â but it's closing</h2>
+      <p>Right now, AI is still new enough that getting it right gives you a serious edge. <strong>That advantage shrinks every month</strong> as more businesses catch on.</p>
+      <p>The business owners who move now build compounding systems. The ones who wait will be playing catch-up â at 10x the cost.</p>
+      <p><strong>One call. Thirty minutes. A clear picture of what AI can do for your bottom line.</strong></p>
+    </div>
+  </div>
+</section>
+
+<!-- FINAL CTA -->
+<section class="final-cta" id="book">
+  <div class="cta-box anim-scale">
+    <h2>Ready to see where the money is?</h2>
+    <p>Book a free strategy call. We'll map your highest-ROI AI opportunities and give you a plan â no strings attached.</p>
+    <a href="https://calendly.com/YOUR-LINK-HERE" class="hero-cta" style="display:inline-flex;position:relative;z-index:1">
+      <span class="cta-icon"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="#000"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"/></svg></span>
+      Book Your Free Call
+    </a>
+    <p class="hero-note" style="position:relative;z-index:1">No commitment. No pitch deck. Just clarity on your next move.</p>
+  </div>
+</section>
+
+<footer><p>&copy; 2026 Rabbithole LLC &middot; San Juan, Puerto Rico</p></footer>
+
+<!-- GSAP -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script>
+gsap.registerPlugin(ScrollTrigger);
+
+/* ââ NAV SCROLL ââ */
+const nav=document.getElementById('mainNav');
+window.addEventListener('scroll',()=>nav.classList.toggle('scrolled',scrollY>60));
+
+/* ââ HERO ENTRANCE â cinematic staggered reveal ââ */
+const heroTl=gsap.timeline({delay:.3});
+heroTl
+  .to('.hero .anim-up',{opacity:1,y:0,duration:1.2,stagger:.18,ease:'power3.out'})
+  .to('.circuit-line',{scaleX:1,opacity:1,duration:1.4,ease:'power2.out'},'-=.9')
+  .to('.circuit-node',{opacity:1,scale:1,duration:.6,stagger:.12,ease:'back.out(1.7)'},'-=.6');
+
+gsap.set('.circuit-line',{scaleX:0,opacity:0});
+gsap.set('.circuit-node',{opacity:0,scale:0});
+
+/* ââ PARALLAX HERO GLOW ââ */
+gsap.to('.hero-glow',{
+  scrollTrigger:{trigger:'.hero',start:'top top',end:'bottom top',scrub:1},
+  y:250,opacity:0,scale:.8
+});
+
+/* ââ BEAM PARALLAX ââ */
+gsap.to('.hero-beam',{
+  scrollTrigger:{trigger:'.hero',start:'top top',end:'bottom top',scrub:1},
+  y:-100,opacity:0
+});
+
+/* ââ SCROLL ANIMATIONS â per-type with unique easings ââ */
+document.querySelectorAll('section .anim-up').forEach(el=>{
+  if(el.closest('.hero'))return;
+  gsap.to(el,{
+    scrollTrigger:{trigger:el,start:'top 90%',toggleActions:'play none none none'},
+    opacity:1,y:0,duration:1.1,ease:'power3.out'
+  });
+});
+
+document.querySelectorAll('section .anim-scale').forEach(el=>{
+  if(el.closest('.hero'))return;
+  gsap.to(el,{
+    scrollTrigger:{trigger:el,start:'top 88%',toggleActions:'play none none none'},
+    opacity:1,scale:1,duration:1,ease:'elastic.out(1,0.75)'
+  });
+});
+
+document.querySelectorAll('section .anim-left').forEach(el=>{
+  gsap.to(el,{
+    scrollTrigger:{trigger:el,start:'top 88%',toggleActions:'play none none none'},
+    opacity:1,x:0,duration:1.1,ease:'power3.out'
+  });
+});
+
+document.querySelectorAll('section .anim-right').forEach(el=>{
+  gsap.to(el,{
+    scrollTrigger:{trigger:el,start:'top 88%',toggleActions:'play none none none'},
+    opacity:1,x:0,duration:1.1,ease:'power3.out'
+  });
+});
+
+document.querySelectorAll('section .anim-rotate').forEach(el=>{
+  gsap.to(el,{
+    scrollTrigger:{trigger:el,start:'top 88%',toggleActions:'play none none none'},
+    opacity:1,rotation:0,scale:1,duration:1.2,ease:'back.out(1.4)'
+  });
+});
+
+/* ââ STAGGERED CARD REVEALS â each grid staggers its children ââ */
+document.querySelectorAll('.grid-3, .grid-4').forEach(grid=>{
+  const cards=grid.querySelectorAll('.card');
+  cards.forEach((card,i)=>{
+    gsap.to(card,{
+      scrollTrigger:{trigger:grid,start:'top 85%',toggleActions:'play none none none'},
+      delay:i*.15
+    });
+  });
+});
+
+/* ââ STATS COUNTER with animated glow ââ */
+document.querySelectorAll('.stat-num').forEach(el=>{
+  const val=el.dataset.count;
+  ScrollTrigger.create({
+    trigger:el,start:'top 85%',once:true,
+    onEnter:()=>{
+      // Animate the card glow
+      gsap.to(el.closest('.stat-card'),{boxShadow:'0 0 40px rgba(34,197,94,.1)',duration:1,yoyo:true,repeat:1});
+      if(val==='M'){
+        gsap.fromTo(el,{innerText:'$0+'},{duration:2,ease:'power2.out',
+          onUpdate:function(){const p=this.progress();el.textContent='$'+(p<1?Math.round(p*10)/10:'M')+'+'}});
+      }else{
+        const n=parseInt(val);let obj={v:0};
+        gsap.to(obj,{v:n,duration:2,ease:'power2.out',
+          onUpdate:()=>{el.textContent=Math.round(obj.v)+(val==='50'?'+':'x')}});
+      }
+    }
+  });
+});
+
+/* ââ STAT CARDS â staggered float-up ââ */
+gsap.utils.toArray('.stat-card').forEach((card,i)=>{
+  gsap.to(card,{
+    scrollTrigger:{trigger:card,start:'top 90%',toggleActions:'play none none none'},
+    opacity:1,scale:1,duration:1,delay:i*.2,ease:'back.out(1.3)'
+  });
+});
+
+/* ââ HIGHLIGHT BOX â green glow pulse on enter ââ */
+ScrollTrigger.create({
+  trigger:'.highlight-box',start:'top 85%',once:true,
+  onEnter:()=>{
+    gsap.fromTo('.highlight-box',
+      {boxShadow:'0 0 0 rgba(34,197,94,0)'},
+      {boxShadow:'0 0 60px rgba(34,197,94,.12)',duration:1.5,ease:'power2.out'}
+    );
+    gsap.fromTo('.highlight-box::before',{opacity:0},{opacity:.5,duration:1});
+  }
+});
+
+/* ââ URGENCY BOX â dramatic entrance ââ */
+ScrollTrigger.create({
+  trigger:'.urg-box',start:'top 82%',once:true,
+  onEnter:()=>{
+    gsap.fromTo('.urg-box',
+      {boxShadow:'0 0 0 rgba(34,197,94,0)'},
+      {boxShadow:'0 0 80px rgba(34,197,94,.08)',duration:2,ease:'power2.out'}
+    );
+  }
+});
+
+/* ââ FINAL CTA â scale entrance with glow ââ */
+ScrollTrigger.create({
+  trigger:'.cta-box',start:'top 82%',once:true,
+  onEnter:()=>{
+    gsap.fromTo('.cta-box',
+      {boxShadow:'0 0 0 rgba(34,197,94,0)'},
+      {boxShadow:'0 0 100px rgba(34,197,94,.1)',duration:2,ease:'power2.out'}
+    );
+  }
+});
+
+/* ââ SECTION GLOW ORBS â gentle parallax drift ââ */
+document.querySelectorAll('.section-glow').forEach(glow=>{
+  gsap.to(glow,{
+    scrollTrigger:{trigger:glow.parentElement,start:'top bottom',end:'bottom top',scrub:1.5},
+    y:-120,x:40,scale:1.2,opacity:.8
+  });
+});
+
+/* ââ SECTION DIVIDERS â draw-in animation ââ */
+document.querySelectorAll('.section-divider').forEach(div=>{
+  gsap.fromTo(div.querySelector('.div-line'),
+    {scaleX:0},
+    {scaleX:1,duration:1.5,ease:'power2.inOut',
+      scrollTrigger:{trigger:div,start:'top 90%',toggleActions:'play none none none'}
+    }
+  );
+});
+
+/* ââ MAGNETIC CARD TILT ââ */
+document.querySelectorAll('.card').forEach(card=>{
+  card.addEventListener('mousemove',e=>{
+    const rect=card.getBoundingClientRect();
+    const x=e.clientX-rect.left;
+    const y=e.clientY-rect.top;
+    const cx=rect.width/2;
+    const cy=rect.height/2;
+    const rotateX=(y-cy)/cy*-4;
+    const rotateY=(x-cx)/cx*4;
+    card.style.setProperty('--mouse-x',x+'px');
+    card.style.setProperty('--mouse-y',y+'px');
+    gsap.to(card,{rotateX:rotateX,rotateY:rotateY,duration:.4,ease:'power2.out',
+      transformPerspective:800,transformOrigin:'center center'});
+  });
+  card.addEventListener('mouseleave',()=>{
+    gsap.to(card,{rotateX:0,rotateY:0,duration:.6,ease:'elastic.out(1,0.5)'});
+  });
+});
+
+/* ââ ROTATING BORDER ANGLE on cards ââ */
+let cardAngle=0;
+function updateCardAngle(){
+  cardAngle+=.5;
+  document.querySelectorAll('.card').forEach(c=>c.style.setProperty('--card-angle',cardAngle+'deg'));
+  requestAnimationFrame(updateCardAngle);
+}
+updateCardAngle();
+
+/* ââ SMOOTH SCROLL VELOCITY for parallax feel ââ */
+let scrollVelocity=0,lastScroll=0;
+window.addEventListener('scroll',()=>{
+  scrollVelocity=Math.abs(scrollY-lastScroll);
+  lastScroll=scrollY;
+});
+
+/* ââ NAV LINKS â smooth highlight ââ */
+document.querySelectorAll('.nav-pill a').forEach(link=>{
+  link.addEventListener('mouseenter',()=>gsap.to(link,{scale:1.05,duration:.2}));
+  link.addEventListener('mouseleave',()=>gsap.to(link,{scale:1,duration:.2}));
+});
+
+/* ââ GLOBAL PARTICLE CANVAS â full page ââ */
+const canvas=document.getElementById('globalCanvas');
+const ctx=canvas.getContext('2d');
+let W,H;
+const particles=[];
+const connections=[];
+
+function resize(){
+  W=canvas.width=window.innerWidth;
+  H=canvas.height=document.documentElement.scrollHeight;
+  canvas.style.height=H+'px';
+}
+resize();
+window.addEventListener('resize',resize);
+
+// More particles, spread across entire page
+for(let i=0;i<120;i++){
+  particles.push({
+    x:Math.random()*3000,
+    y:Math.random()*8000,
+    r:Math.random()*1.8+.4,
+    dx:(Math.random()-.5)*.25,
+    dy:(Math.random()-.5)*.15,
+    a:Math.random()*.35+.05,
+    pulse:Math.random()*Math.PI*2,
+    pulseSpeed:Math.random()*.02+.005
+  });
+}
+
+function drawParticles(){
+  ctx.clearRect(0,0,W,H);
+
+  // Draw connections between nearby particles
+  for(let i=0;i<particles.length;i++){
+    for(let j=i+1;j<particles.length;j++){
+      const dx=particles[i].x-particles[j].x;
+      const dy=particles[i].y-particles[j].y;
+      const dist=Math.sqrt(dx*dx+dy*dy);
+      if(dist<150){
+        ctx.beginPath();
+        ctx.moveTo(particles[i].x,particles[i].y);
+        ctx.lineTo(particles[j].x,particles[j].y);
+        ctx.strokeStyle=`rgba(34,197,94,${(1-dist/150)*.06})`;
+        ctx.lineWidth=.5;
+        ctx.stroke();
+      }
+    }
+  }
+
+  particles.forEach(p=>{
+    p.x+=p.dx;p.y+=p.dy;
+    p.pulse+=p.pulseSpeed;
+    const pulsedA=p.a*(0.7+Math.sin(p.pulse)*0.3);
+    if(p.x<0)p.x=W;if(p.x>W)p.x=0;if(p.y<0)p.y=H;if(p.y>H)p.y=0;
+
+    // Core dot
+    ctx.beginPath();ctx.arc(p.x,p.y,p.r,0,Math.PI*2);
+    ctx.fillStyle=`rgba(34,197,94,${pulsedA})`;ctx.fill();
+
+    // Soft glow
+    ctx.beginPath();ctx.arc(p.x,p.y,p.r*4,0,Math.PI*2);
+    ctx.fillStyle=`rgba(34,197,94,${pulsedA*.1})`;ctx.fill();
+  });
+
+  requestAnimationFrame(drawParticles);
+}
+drawParticles();
+
+// Resize canvas on scroll to match document height
+let lastHeight=0;
+setInterval(()=>{
+  const h=document.documentElement.scrollHeight;
+  if(h!==lastHeight){lastHeight=h;resize();}
+},2000);
+</script>
+</body>
+</html>
