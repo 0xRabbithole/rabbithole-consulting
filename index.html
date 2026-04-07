@@ -245,6 +245,36 @@ footer p{color:var(--muted);font-size:.78rem;letter-spacing:.02em}
 /* RESPONSIVE */
 
 /* Large tablets / small desktops */
+/* =============================================
+   PORTFOLIO â BUILT, NOT PITCHED
+   ============================================= */
+.project-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:1.25rem}
+.project-card{background:var(--card);border:1px solid var(--border);border-radius:22px;
+  padding:2.25rem 2.5rem;backdrop-filter:blur(6px);transition:border-color .4s,background .4s;
+  position:relative;overflow:hidden;transform-style:preserve-3d;perspective:800px}
+.project-card::before{content:'';position:absolute;top:0;left:0;right:0;bottom:0;border-radius:22px;
+  background:radial-gradient(600px circle at var(--mouse-x,50%) var(--mouse-y,50%),rgba(34,197,94,.06),transparent 40%);
+  opacity:0;transition:opacity .4s;pointer-events:none}
+.project-card:hover::before{opacity:1}
+.project-card:hover{background:var(--card-hover);border-color:var(--border-hover)}
+.project-card::after{content:'';position:absolute;inset:-1px;border-radius:23px;
+  background:conic-gradient(from var(--card-angle,0deg),transparent,rgba(34,197,94,.12),transparent);
+  z-index:-1;opacity:0;transition:opacity .5s}
+.project-card:hover::after{opacity:1}
+.project-num{font-family:'Orbitron',sans-serif;font-size:.65rem;letter-spacing:.15em;
+  color:var(--green);opacity:.5;margin-bottom:1.25rem;display:block;text-transform:uppercase}
+.project-card h3{font-size:1.05rem;font-weight:600;margin-bottom:.6rem;letter-spacing:-.01em}
+.project-card p{color:var(--muted);font-size:.88rem;line-height:1.7}
+.tech-tags{display:flex;flex-wrap:wrap;gap:.4rem;margin-top:1.25rem}
+.tech-tag{font-size:.62rem;font-weight:500;color:var(--muted);background:rgba(255,255,255,.04);
+  border:1px solid var(--border);padding:.2rem .55rem;border-radius:6px;letter-spacing:.04em}
+.project-link{display:inline-flex;align-items:center;gap:.4rem;font-size:.75rem;
+  color:rgba(34,197,94,.7);margin-top:1.25rem;text-decoration:none;font-weight:500;
+  transition:color .2s;letter-spacing:.02em}
+.project-link:hover{color:var(--green)}
+.project-link svg{width:11px;height:11px;flex-shrink:0}
+
+
 @media(max-width:1024px){
   nav{padding:1rem 1.8rem}
   .hero h1{font-size:clamp(2.4rem,5.5vw,4.2rem)}
@@ -500,6 +530,78 @@ footer p{color:var(--muted);font-size:.78rem;letter-spacing:.02em}
 <div class="section-divider"><div class="div-line"></div><div class="div-glow" style="animation-delay:3s"></div></div>
 
 <!-- SERVICES -->
+<section id="work">
+  <div class="section-glow" style="bottom:-100px;left:-200px"></div>
+  <div class="container">
+    <div class="sec-head">
+      <div class="sec-tag anim-up"><span class="tag-line"></span>Portfolio<span class="tag-line"></span></div>
+      <h2 class="anim-up">Built, not pitched</h2>
+      <p class="anim-up">We run our own businesses on everything we sell. Every system we recommend for you is one we've already shipped and pressure-tested ourselves.</p>
+    </div>
+    <div class="project-grid">
+
+      <div class="project-card anim-scale">
+        <span class="project-num">// 001</span>
+        <h3>Rabbithole Platform</h3>
+        <p>Full-stack AI platform powering our agentic workforce. Production-grade with authentication, agent dispatch, real-time dashboards, and cross-machine memory sync. The command center behind everything we do.</p>
+        <a href="https://rabbithole.pro" target="_blank" rel="noopener" class="project-link">
+          rabbithole.pro <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 6H5.25A2.25 2.25 0 003 8.25v10.5A2.25 2.25 0 005.25 21h10.5A2.25 2.25 0 0018 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25"/></svg>
+        </a>
+      </div>
+
+      <div class="project-card anim-scale">
+        <span class="project-num">// 002</span>
+        <h3>Butler â AI Executive Assistant</h3>
+        <p>AI-first executive assistant with persistent memory, workflow automation, and on-demand task execution. Live MVP â built from concept to production in a single sprint.</p>
+        <a href="https://mybutler.pro" target="_blank" rel="noopener" class="project-link">
+          mybutler.pro <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 6H5.25A2.25 2.25 0 003 8.25v10.5A2.25 2.25 0 005.25 21h10.5A2.25 2.25 0 0018 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25"/></svg>
+        </a>
+      </div>
+
+      <div class="project-card anim-scale">
+        <span class="project-num">// 003</span>
+        <h3>Memory Layer</h3>
+        <p>Persistent AI command center with cross-machine memory, live agent modules, session continuity, and automated context management. The operational core we deploy for every client.</p>
+        <span class="project-link" style="cursor:default;opacity:.4">Client-deployed Â· Not public</span>
+      </div>
+
+      <div class="project-card anim-scale">
+        <span class="project-num">// 004</span>
+        <h3>ClipThat</h3>
+        <p>Coming soon.</p>
+        <a href="https://clipthat.xyz" target="_blank" rel="noopener" class="project-link">
+          clipthat.xyz <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 6H5.25A2.25 2.25 0 003 8.25v10.5A2.25 2.25 0 005.25 21h10.5A2.25 2.25 0 0018 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25"/></svg>
+        </a>
+      </div>
+
+      <div class="project-card anim-scale">
+        <span class="project-num">// 005</span>
+        <h3>This Site</h3>
+        <p>Designed, built, and deployed to production in a single AI session. Cinematic dark theme, scroll animations, particle canvas, and a Notion-backed newsletter API â all from scratch.</p>
+        <a href="https://rabbithole.consulting" class="project-link">
+          rabbithole.consulting <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 6H5.25A2.25 2.25 0 003 8.25v10.5A2.25 2.25 0 005.25 21h10.5A2.25 2.25 0 0018 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25"/></svg>
+        </a>
+      </div>
+
+      <div class="project-card anim-scale">
+        <span class="project-num">// 006</span>
+        <h3>EventRunner</h3>
+        <p>End-to-end event management platform built to handle the full lifecycle â from ticketing and registration to day-of logistics and post-event reporting. Live and in production.</p>
+        <a href="https://eventrunner.pro" target="_blank" rel="noopener" class="project-link">
+          eventrunner.pro <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 6H5.25A2.25 2.25 0 003 8.25v10.5A2.25 2.25 0 005.25 21h10.5A2.25 2.25 0 0018 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25"/></svg>
+        </a>
+      </div>
+
+      <div class="project-card anim-scale">
+        <span class="project-num">// 007</span>
+        <h3>AI Workshop Series â Puerto Rico</h3>
+        <p>Live workshop program hosted at hotels in San Juan targeting SMB owners on vacation. Educate, demonstrate live systems, and convert. The most creative lead-gen channel we've built.</p>
+        <span class="project-link" style="cursor:default;opacity:.4">In development Â· PR launch 2026</span>
+      </div>
+
+    </div>
+  </div>
+</section>
 <section id="services">
   <div class="section-glow" style="top:50%;left:-300px;transform:translateY(-50%)"></div>
   <div class="container">
