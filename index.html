@@ -81,10 +81,6 @@ nav.scrolled{background:rgba(0,0,0,.75);backdrop-filter:blur(24px);border-bottom
 .circuit-node.n1{left:12%}.circuit-node.n2{left:35%}.circuit-node.n3{right:35%}.circuit-node.n4{right:12%}
 
 .hero-content{position:relative;z-index:3}
-.hero-badge{display:inline-flex;align-items:center;gap:.55rem;font-size:.72rem;font-weight:600;
-  color:var(--text2);background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);
-  padding:.5rem 1.3rem;border-radius:100px;text-transform:uppercase;letter-spacing:.06em;margin-bottom:2.5rem}
-.badge-dot{width:6px;height:6px;border-radius:50%;background:var(--green);box-shadow:0 0 12px var(--green)}
 .hero h1{font-size:clamp(2.8rem,6.5vw,5.5rem);font-weight:300;letter-spacing:-.045em;line-height:1.0;
   max-width:950px;margin:0 auto 1.75rem}
 .hero h1 em{font-style:normal;background:linear-gradient(135deg,#22c55e,#86efac,#22c55e);
@@ -242,11 +238,8 @@ footer p{color:var(--muted);font-size:.78rem;letter-spacing:.02em}
   background:radial-gradient(circle,rgba(34,197,94,.04) 0%,transparent 70%);
   pointer-events:none;z-index:0}
 
-/* RESPONSIVE */
-
-/* Large tablets / small desktops */
 /* =============================================
-   PORTFOLIO â BUILT, NOT PITCHED
+   PORTFOLIO — BUILT, NOT PITCHED
    ============================================= */
 .project-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:1.25rem}
 .project-card{background:var(--card);border:1px solid var(--border);border-radius:22px;
@@ -274,7 +267,7 @@ footer p{color:var(--muted);font-size:.78rem;letter-spacing:.02em}
 .project-link:hover{color:var(--green)}
 .project-link svg{width:11px;height:11px;flex-shrink:0}
 
-
+/* RESPONSIVE */
 @media(max-width:1024px){
   nav{padding:1rem 1.8rem}
   .hero h1{font-size:clamp(2.4rem,5.5vw,4.2rem)}
@@ -288,7 +281,6 @@ footer p{color:var(--muted);font-size:.78rem;letter-spacing:.02em}
   .urg-box,.cta-box{max-width:640px}
 }
 
-/* Tablets */
 @media(max-width:768px){
   nav{padding:.9rem 1.2rem}
   .nav-pill{display:none}
@@ -298,7 +290,7 @@ footer p{color:var(--muted);font-size:.78rem;letter-spacing:.02em}
   .hero-sub{font-size:.98rem;max-width:400px;margin-bottom:2rem}
   .hero-cta{padding:.8rem 1.8rem;font-size:.88rem}
   .stats-grid{grid-template-columns:1fr;max-width:400px}
-  .grid-3,.grid-4{grid-template-columns:1fr}
+  .grid-3,.grid-4,.project-grid{grid-template-columns:1fr}
   .circuit-wrap{display:none}
   .hero-glow{width:500px;height:500px;top:-100px}
   .cta-box,.urg-box{padding:3rem 1.5rem}
@@ -315,7 +307,6 @@ footer p{color:var(--muted);font-size:.78rem;letter-spacing:.02em}
   .nav-cta{padding:.45rem 1rem;font-size:.78rem}
 }
 
-/* Small phones */
 @media(max-width:480px){
   nav{padding:.75rem 1rem}
   .hero{padding:6rem 1rem 2.5rem;min-height:85vh}
@@ -360,6 +351,7 @@ footer p{color:var(--muted);font-size:.78rem;letter-spacing:.02em}
   .nav-dot{width:6px;height:6px}
   footer{padding:2rem 1rem}
   footer p{font-size:.72rem}
+  .project-card{padding:1.75rem;border-radius:18px}
 }
 
 /* GSAP initial states */
@@ -402,7 +394,7 @@ footer p{color:var(--muted);font-size:.78rem;letter-spacing:.02em}
   <div class="hero-content">
     <h1 class="anim-up">Your competitors are using AI to <em>make more money</em>. Are you?</h1>
     <p class="hero-sub anim-up">We help business owners find the exact places where AI creates real revenue &mdash; not more tools, not more complexity, just more profit.</p>
-    <a href="https://calendly.com/YOUR-LINK-HERE" class="hero-cta anim-up">
+    <a href="https://calendly.com/team-rabbithole/30min" target="_blank" rel="noopener" class="hero-cta anim-up">
       <span class="cta-icon"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="#000"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"/></svg></span>
       Book a Free Strategy Call
     </a>
@@ -529,7 +521,7 @@ footer p{color:var(--muted);font-size:.78rem;letter-spacing:.02em}
 
 <div class="section-divider"><div class="div-line"></div><div class="div-glow" style="animation-delay:3s"></div></div>
 
-<!-- SERVICES -->
+<!-- BUILT, NOT PITCHED — PORTFOLIO -->
 <section id="work">
   <div class="section-glow" style="bottom:-100px;left:-200px"></div>
   <div class="container">
@@ -551,8 +543,8 @@ footer p{color:var(--muted);font-size:.78rem;letter-spacing:.02em}
 
       <div class="project-card anim-scale">
         <span class="project-num">// 002</span>
-        <h3>Butler â AI Executive Assistant</h3>
-        <p>AI-first executive assistant with persistent memory, workflow automation, and on-demand task execution. Live MVP â built from concept to production in a single sprint.</p>
+        <h3>Butler — AI Executive Assistant</h3>
+        <p>AI-first executive assistant with persistent memory, workflow automation, and on-demand task execution. Live MVP — built from concept to production in a single sprint.</p>
         <a href="https://mybutler.pro" target="_blank" rel="noopener" class="project-link">
           mybutler.pro <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 6H5.25A2.25 2.25 0 003 8.25v10.5A2.25 2.25 0 005.25 21h10.5A2.25 2.25 0 0018 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25"/></svg>
         </a>
@@ -562,7 +554,7 @@ footer p{color:var(--muted);font-size:.78rem;letter-spacing:.02em}
         <span class="project-num">// 003</span>
         <h3>Memory Layer</h3>
         <p>Persistent AI command center with cross-machine memory, live agent modules, session continuity, and automated context management. The operational core we deploy for every client.</p>
-        <span class="project-link" style="cursor:default;opacity:.4">Client-deployed Â· Not public</span>
+        <span class="project-link" style="cursor:default;opacity:.4">Client-deployed · Not public</span>
       </div>
 
       <div class="project-card anim-scale">
@@ -577,7 +569,7 @@ footer p{color:var(--muted);font-size:.78rem;letter-spacing:.02em}
       <div class="project-card anim-scale">
         <span class="project-num">// 005</span>
         <h3>This Site</h3>
-        <p>Designed, built, and deployed to production in a single AI session. Cinematic dark theme, scroll animations, particle canvas, and a Notion-backed newsletter API â all from scratch.</p>
+        <p>Designed, built, and deployed to production in a single AI session. Cinematic dark theme, scroll animations, particle canvas, and a Notion-backed newsletter API — all from scratch.</p>
         <a href="https://rabbithole.consulting" class="project-link">
           rabbithole.consulting <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 6H5.25A2.25 2.25 0 003 8.25v10.5A2.25 2.25 0 005.25 21h10.5A2.25 2.25 0 0018 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25"/></svg>
         </a>
@@ -586,7 +578,7 @@ footer p{color:var(--muted);font-size:.78rem;letter-spacing:.02em}
       <div class="project-card anim-scale">
         <span class="project-num">// 006</span>
         <h3>EventRunner</h3>
-        <p>End-to-end event management platform built to handle the full lifecycle â from ticketing and registration to day-of logistics and post-event reporting. Live and in production.</p>
+        <p>End-to-end event management platform built to handle the full lifecycle — from ticketing and registration to day-of logistics and post-event reporting. Live and in production.</p>
         <a href="https://eventrunner.pro" target="_blank" rel="noopener" class="project-link">
           eventrunner.pro <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 6H5.25A2.25 2.25 0 003 8.25v10.5A2.25 2.25 0 005.25 21h10.5A2.25 2.25 0 0018 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25"/></svg>
         </a>
@@ -594,14 +586,18 @@ footer p{color:var(--muted);font-size:.78rem;letter-spacing:.02em}
 
       <div class="project-card anim-scale">
         <span class="project-num">// 007</span>
-        <h3>AI Workshop Series â Puerto Rico</h3>
+        <h3>AI Workshop Series — Puerto Rico</h3>
         <p>Live workshop program hosted at hotels in San Juan targeting SMB owners on vacation. Educate, demonstrate live systems, and convert. The most creative lead-gen channel we've built.</p>
-        <span class="project-link" style="cursor:default;opacity:.4">In development Â· PR launch 2026</span>
+        <span class="project-link" style="cursor:default;opacity:.4">In development · PR launch 2026</span>
       </div>
 
     </div>
   </div>
 </section>
+
+<div class="section-divider"><div class="div-line"></div><div class="div-glow" style="animation-delay:.5s"></div></div>
+
+<!-- SERVICES -->
 <section id="services">
   <div class="section-glow" style="top:50%;left:-300px;transform:translateY(-50%)"></div>
   <div class="container">
@@ -660,7 +656,7 @@ footer p{color:var(--muted);font-size:.78rem;letter-spacing:.02em}
   <div class="cta-box anim-scale">
     <h2>Ready to see where the money is?</h2>
     <p>Book a free strategy call. We'll map your highest-ROI AI opportunities and give you a plan &mdash; no strings attached.</p>
-    <a href="https://calendly.com/YOUR-LINK-HERE" class="hero-cta" style="display:inline-flex;position:relative;z-index:1">
+    <a href="https://calendly.com/team-rabbithole/30min" target="_blank" rel="noopener" class="hero-cta" style="display:inline-flex;position:relative;z-index:1">
       <span class="cta-icon"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="#000"><path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"/></svg></span>
       Book Your Free Call
     </a>
@@ -741,8 +737,8 @@ document.querySelectorAll('section .anim-rotate').forEach(el=>{
 });
 
 /* -- STAGGERED CARD REVEALS  -  each grid staggers its children -- */
-document.querySelectorAll('.grid-3, .grid-4').forEach(grid=>{
-  const cards=grid.querySelectorAll('.card');
+document.querySelectorAll('.grid-3, .grid-4, .project-grid').forEach(grid=>{
+  const cards=grid.querySelectorAll('.card, .project-card');
   cards.forEach((card,i)=>{
     gsap.to(card,{
       scrollTrigger:{trigger:grid,start:'top 85%',toggleActions:'play none none none'},
@@ -757,7 +753,6 @@ document.querySelectorAll('.stat-num').forEach(el=>{
   ScrollTrigger.create({
     trigger:el,start:'top 85%',once:true,
     onEnter:()=>{
-      // Animate the card glow
       gsap.to(el.closest('.stat-card'),{boxShadow:'0 0 40px rgba(34,197,94,.1)',duration:1,yoyo:true,repeat:1});
       if(val==='M'){
         gsap.fromTo(el,{innerText:'$0+'},{duration:2,ease:'power2.out',
@@ -832,7 +827,7 @@ document.querySelectorAll('.section-divider').forEach(div=>{
 });
 
 /* -- MAGNETIC CARD TILT -- */
-document.querySelectorAll('.card').forEach(card=>{
+document.querySelectorAll('.card, .project-card').forEach(card=>{
   card.addEventListener('mousemove',e=>{
     const rect=card.getBoundingClientRect();
     const x=e.clientX-rect.left;
@@ -855,7 +850,7 @@ document.querySelectorAll('.card').forEach(card=>{
 let cardAngle=0;
 function updateCardAngle(){
   cardAngle+=.5;
-  document.querySelectorAll('.card').forEach(c=>c.style.setProperty('--card-angle',cardAngle+'deg'));
+  document.querySelectorAll('.card, .project-card').forEach(c=>c.style.setProperty('--card-angle',cardAngle+'deg'));
   requestAnimationFrame(updateCardAngle);
 }
 updateCardAngle();
@@ -878,7 +873,6 @@ const canvas=document.getElementById('globalCanvas');
 const ctx=canvas.getContext('2d');
 let W,H;
 const particles=[];
-const connections=[];
 
 function resize(){
   W=canvas.width=window.innerWidth;
@@ -888,7 +882,6 @@ function resize(){
 resize();
 window.addEventListener('resize',resize);
 
-// More particles, spread across entire page
 for(let i=0;i<120;i++){
   particles.push({
     x:Math.random()*3000,
@@ -904,8 +897,6 @@ for(let i=0;i<120;i++){
 
 function drawParticles(){
   ctx.clearRect(0,0,W,H);
-
-  // Draw connections between nearby particles
   for(let i=0;i<particles.length;i++){
     for(let j=i+1;j<particles.length;j++){
       const dx=particles[i].x-particles[j].x;
@@ -921,27 +912,20 @@ function drawParticles(){
       }
     }
   }
-
   particles.forEach(p=>{
     p.x+=p.dx;p.y+=p.dy;
     p.pulse+=p.pulseSpeed;
     const pulsedA=p.a*(0.7+Math.sin(p.pulse)*0.3);
     if(p.x<0)p.x=W;if(p.x>W)p.x=0;if(p.y<0)p.y=H;if(p.y>H)p.y=0;
-
-    // Core dot
     ctx.beginPath();ctx.arc(p.x,p.y,p.r,0,Math.PI*2);
     ctx.fillStyle=`rgba(34,197,94,${pulsedA})`;ctx.fill();
-
-    // Soft glow
     ctx.beginPath();ctx.arc(p.x,p.y,p.r*4,0,Math.PI*2);
     ctx.fillStyle=`rgba(34,197,94,${pulsedA*.1})`;ctx.fill();
   });
-
   requestAnimationFrame(drawParticles);
 }
 drawParticles();
 
-// Resize canvas on scroll to match document height
 let lastHeight=0;
 setInterval(()=>{
   const h=document.documentElement.scrollHeight;
@@ -950,4 +934,3 @@ setInterval(()=>{
 </script>
 </body>
 </html>
-
