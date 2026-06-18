@@ -1,3 +1,14 @@
+> # ⚠️ DEPRECATED — this repo has moved
+>
+> The Rabbithole Consulting site now lives in the monorepo:
+> **[`Rabbithole-llc/rabbithole`](https://github.com/Rabbithole-llc/rabbithole)** under
+> **`domains/web/consulting/`**.
+>
+> It deploys to **rabbithole.consulting** via Vercel git auto-deploy (push to `main`).
+> This standalone repo is **archived** and no longer deployed. Do not edit here.
+>
+> ---
+>
 # Last cache-invalidate redeploy: 2026-05-23T13:38:22Z
 # Rabbithole Consulting
 
