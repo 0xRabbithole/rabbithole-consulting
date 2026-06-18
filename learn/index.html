@@ -1,0 +1,118 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- PostHog -->
+    <script>
+      !function(t,e){var o,n,p,r;e.__SV||(window.posthog=e,e._i=[],e.init=function(i,s,a){function g(t,e){var o=e.split(".");2==o.length&&(t=t[o[0]],e=o[1]),t[e]=function(){t.push([e].concat(Array.prototype.slice.call(arguments,0)))}}(p=t.createElement("script")).type="text/javascript",p.crossOrigin="anonymous",p.async=!0,p.src=s.api_host.replace(".i.posthog.com","-assets.i.posthog.com")+"/static/array.js",(r=t.getElementsByTagName("script")[0]).parentNode.insertBefore(p,r);var u=e;for(void 0!==a?u=e[a]=[]:a="posthog",u.people=u.people||[],u.toString=function(t){var e="posthog";return"posthog"!==a&&(e+="."+a),t||(e+=" (stub)"),e},u.people.toString=function(){return u.toString(1)+".people (stub)"},o="init capture register register_once register_for_session unregister unregister_for_session getFeatureFlag getFeatureFlagPayload isFeatureEnabled reloadFeatureFlags updateEarlyAccessFeatureEnrollment getEarlyAccessFeatures on onFeatureFlags onSessionId getSurveys getActiveMatchingSurveys renderSurvey canRenderSurvey getNextSurveyStep identify setPersonProperties group resetGroups setPersonPropertiesForFlags resetPersonPropertiesForFlags setGroupPropertiesForFlags resetGroupPropertiesForFlags reset opt_in_capturing opt_out_capturing has_opted_in_capturing has_opted_out_capturing clear_opt_in_out_capturing startSessionRecording stopSessionRecording sessionRecordingStarted captureException loadToolbar get_property getSessionProperty createPersonProfile opt_in_session_recording opt_out_session_recording has_opted_in_session_recording has_opted_out_session_recording clear_opt_in_out_session_recording createCohort onSessionRecording".split(" "),n=0;n<o.length;n++)g(u,o[n]);e._i.push([i,s,a])},e.__SV=1)}(document,window.posthog||[]);
+      posthog.init('phc_kmXwWMfoPRJ2s36tUNQNrhmKiKniLGzr4pNuCKCRk4yJ', {
+          api_host: 'https://us.i.posthog.com',
+          defaults: '2025-05-24',
+          person_profiles: 'identified_only'
+      });
+    </script>
+    <!-- /PostHog -->
+
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Learn | Rabbithole Consulting</title>
+    <meta name="description" content="Free, plain-English guides and working kits to help you put AI to work in your business. From Rabbithole Consulting." />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://rabbithole.consulting/learn" />
+    <meta property="og:title" content="Learn — free AI guides & kits | Rabbithole" />
+    <meta property="og:description" content="Plain-English guides and working kits to put AI to work in your business." />
+    <meta property="og:image" content="https://rabbithole.consulting/og-image.png" />
+    <meta property="og:site_name" content="Rabbithole Consulting" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <link rel="canonical" href="https://rabbithole.consulting/learn" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32.png" />
+    <link rel="apple-touch-icon" href="/assets/favicon-192.png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700&family=Newsreader:ital,wght@1,400;1,500&display=swap" rel="stylesheet" />
+    <style>
+      :root {
+        --bg: #ffffff; --bg-soft: #f5f6f8; --line: #eaecf0; --line-2: #e3e6eb;
+        --navy: #0a0e1c; --navy-2: #142253; --blue: #1d3a8a; --blue-soft: #dee3f3;
+        --text: #1a1a1a; --muted: #6b7280; --muted-2: #5a5f66;
+      }
+      * { box-sizing: border-box; }
+      html, body { margin: 0; }
+      body { font-family: 'Inter', system-ui, sans-serif; background: var(--bg); color: var(--text); line-height: 1.6; -webkit-font-smoothing: antialiased; }
+      h1, h2, h3 { font-family: 'Inter Tight', sans-serif; letter-spacing: -0.02em; }
+      .serif { font-family: 'Newsreader', Georgia, serif; font-style: italic; }
+      .shell { max-width: 860px; margin: 0 auto; padding: 0 22px; }
+
+      .topbar { border-bottom: 1px solid var(--line); }
+      .topbar .inner { max-width: 860px; margin: 0 auto; padding: 16px 22px; display: flex; align-items: center; justify-content: space-between; }
+      .brand { font-family: 'Inter Tight', sans-serif; font-weight: 700; color: var(--navy); text-decoration: none; }
+      .topbar a.cta { font-family: 'Inter Tight', sans-serif; font-weight: 600; font-size: 14px; color: #fff; background: var(--navy-2); text-decoration: none; padding: 9px 16px; border-radius: 9px; }
+      .topbar a.cta:hover { background: var(--blue); }
+
+      header.hero { padding: 50px 0 26px; }
+      .eyebrow { font-family: 'Inter Tight', sans-serif; font-size: 13px; font-weight: 700; color: var(--blue); letter-spacing: .06em; text-transform: uppercase; }
+      h1 { font-size: 40px; font-weight: 800; margin: 12px 0 10px; line-height: 1.1; color: var(--navy); }
+      .lede { color: var(--muted-2); font-size: 18px; margin: 0; max-width: 60ch; }
+
+      .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; padding: 8px 0 50px; }
+      @media (max-width: 720px) { .grid { grid-template-columns: 1fr; } }
+      .lesson { display: flex; flex-direction: column; border: 1px solid var(--line-2); border-radius: 16px; padding: 22px; text-decoration: none; color: inherit; transition: all .18s ease; background: #fff; }
+      .lesson:hover { border-color: var(--blue); transform: translateY(-2px); box-shadow: 0 10px 28px rgba(20,34,83,0.08); }
+      .lesson .ic { font-size: 26px; }
+      .lesson h3 { font-size: 19px; margin: 12px 0 6px; color: var(--navy); }
+      .lesson p { font-size: 14.5px; color: var(--muted); margin: 0 0 14px; flex: 1; }
+      .lesson .meta { display: flex; align-items: center; gap: 8px; font-size: 12.5px; }
+      .pill { font-family: 'Inter Tight', sans-serif; font-weight: 700; font-size: 11px; color: var(--blue); background: var(--blue-soft); border-radius: 99px; padding: 4px 10px; }
+      .go { font-family: 'Inter Tight', sans-serif; font-weight: 700; color: var(--blue); }
+
+      .lesson.soon { background: var(--bg-soft); border-style: dashed; cursor: default; }
+      .lesson.soon:hover { transform: none; box-shadow: none; border-color: var(--line-2); }
+      .lesson.soon .pill { color: var(--muted); background: #fff; border: 1px solid var(--line-2); }
+
+      .foot { text-align: center; color: var(--muted); font-size: 13px; padding: 26px 0 50px; border-top: 1px solid var(--line); }
+      .foot a { color: var(--navy-2); font-weight: 600; text-decoration: none; }
+    </style>
+  </head>
+  <body>
+    <div class="topbar">
+      <div class="inner">
+        <a class="brand" href="https://rabbithole.consulting">🐇 Rabbithole</a>
+        <a class="cta" href="https://rabbithole.consulting">Work with us →</a>
+      </div>
+    </div>
+
+    <div class="shell">
+      <header class="hero">
+        <div class="eyebrow">Rabbithole · Learn</div>
+        <h1>Put AI to work in your business — <span class="serif">without the jargon.</span></h1>
+        <p class="lede">Free, plain-English guides and working kits. Each one takes a few minutes and leaves you with something you can actually use. New drops regularly.</p>
+      </header>
+
+      <div class="grid">
+        <a class="lesson" href="/learn/mcp">
+          <div class="ic">🔌</div>
+          <h3>What is an MCP?</h3>
+          <p>A 2-minute visual guide: what an MCP is, how it differs from an API, and real ones (Chrome, Google, Stripe, Higgsfield) in action.</p>
+          <div class="meta"><span class="pill">2 min · Guide</span> <span class="go">Start →</span></div>
+        </a>
+
+        <a class="lesson" href="/learn/secretary">
+          <div class="ic">🐇</div>
+          <h3>Your AI secretary</h3>
+          <p>Text it like an assistant — it reads your calendar, drafts the email, and books the meeting (after you say yes). Watch it work.</p>
+          <div class="meta"><span class="pill">2 min · Guide</span> <span class="go">Start →</span></div>
+        </a>
+
+        <div class="lesson soon">
+          <div class="ic">✨</div>
+          <h3>More lessons coming</h3>
+          <p>We're publishing a new free AI guide or kit regularly — connecting your tools, automating busywork, and more.</p>
+          <div class="meta"><span class="pill">Soon</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="foot">
+      Built by <a href="https://rabbithole.consulting">rabbithole.consulting</a> — custom-built infrastructure that runs your business.
+    </div>
+  </body>
+</html>
